@@ -1,10 +1,10 @@
-/* Custom Font Import */
+/* 1. Custom Font Import */
 @font-face {
     font-family: 'Gnommish';
     src: url('fonts/artemisfowlfont.otf') format('opentype');
 }
 
-/* Reset and Base Styles */
+/* 2. Reset and Base Styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,10 +17,10 @@ body {
     color: #000000;
     display: flex;
     height: 100vh;
-    overflow: hidden; /* Prevents double scrollbars */
+    overflow: hidden; /* Keeps the sidebar fixed while the dictionary scrolls */
 }
 
-/* Sidebar */
+/* 3. Sidebar Navigation */
 .sidebar {
     width: 280px;
     border-right: 3px solid #000;
@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #fff;
+    flex-shrink: 0;
 }
 
 .logo h1 {
@@ -43,11 +44,12 @@ body {
 }
 
 hr {
-    border: 1px solid #000;
+    border: 0;
+    border-top: 2px solid #000;
     margin-bottom: 30px;
 }
 
-.sidebar a {
+.sidebar a, .dropbtn {
     text-decoration: none;
     color: #000;
     font-weight: 900;
@@ -55,144 +57,120 @@ hr {
     padding: 12px 0;
     border-bottom: 1px solid transparent;
     transition: 0.2s;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
 }
 
 .sidebar a:hover {
     border-bottom: 1px solid #000;
 }
 
-.sidebar-footer {
-    margin-top: auto;
-    font-size: 0.6rem;
-    text-transform: uppercase;
-}
-
-/* Main Content Area */
-.content {
-    flex-grow: 1;
-    padding: 60px;
-    overflow-y: auto;
-}
-
-header h2 {
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-/* Input/Output Styles */
-.decoder-interface {
-    margin-top: 50px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-textarea {
-    width: 100%;
-    height: 150px;
-    border: 2px solid #000;
-    padding: 15px;
-    font-family: 'Arial', sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 40px;
-    resize: none;
-}
-
-.gnommish-display {
-    width: 100%;
-    min-height: 150px;
-    border: 2px solid #000;
-    padding: 15px;
-    font-family: 'Gnommish', sans-serif;
-    font-size: 3rem;
-    word-wrap: break-word;
-    background-color: #fafafa;
-}
-
-.translation-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 80px; /* Space between each big letter */
-    padding: 50px 0;
-}
-
-.letter-unit {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.gnommish-large {
-    font-family: 'Gnommish';
-    font-size: 8rem; /* Big and awesome */
-    margin-bottom: 10px;
-}
-
-.english-ref {
-    font-size: 2rem;
-    font-weight: bold;
-    border-top: 2px solid #000;
-    width: 100px;
-    padding-top: 10px;
-}
-
-.phonetic-sound {
-    font-size: 1.2rem;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Dropdown Container */
+/* 4. The Dictionary Dropdown Grid */
 .dropdown {
     position: relative;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Dictionary Button */
-.dropbtn {
-    background-color: transparent;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* Hidden Alphabet Menu */
 .dropdown-content {
     display: none;
-    position: absolute;
-    background-color: #000;
-    min-width: 60px;
-    border: 1px solid #00ff00;
-    z-index: 1;
+    background-color: #fff;
+    border: 2px solid #000;
+    margin-top: 10px;
 }
 
-/* Links inside the dropdown */
+.dropdown:hover .dropdown-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 letters per row */
+}
+
 .dropdown-content a {
-    color: #00ff00;
-    padding: 8px 12px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #eee;
 }
 
 .dropdown-content a:hover {
-    background-color: #003300;
+    background-color: #000;
+    color: #fff;
 }
 
-/* Show the menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
+/* 5. Main Content Area */
+.content {
+    flex-grow: 1;
+    padding: 60px;
+    overflow-y: auto; /* Allows the dictionary to scroll */
+}
+
+header h2 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    border-bottom: 5px solid #000;
+    display: inline-block;
+}
+
+/* 6. CRITICAL: Gnommish Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    text-align: left;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    padding: 15px;
+    border-bottom: 3px solid #000;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle;
+}
+
+/* This class forces the text to turn into Gnommish symbols */
+.gnommish-cell {
+    font-family: 'Gnommish', sans-serif !important;
+    font-size: 2.2rem; /* Big enough to read symbols */
+    line-height: 1;
+    color: #000;
+}
+
+/* Header rows for A, B, C etc. */
+.section-header {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.section-header td {
+    padding: 10px 15px;
+}
+
+/* 7. Decoder Interface (for your Home Page) */
+textarea {
+    width: 100%;
+    height: 150px;
+    border: 3px solid #000;
+    padding: 20px;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.gnommish-display {
+    font-family: 'Gnommish';
+    font-size: 3.5rem;
+    border: 3px solid #000;
+    padding: 20px;
+    background: #f9f9f9;
+    min-height: 150px;
 }
