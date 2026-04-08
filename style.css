@@ -114,3 +114,39 @@ textarea {
     word-wrap: break-word;
     background-color: #fafafa;
 }
+
+.translation-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px; /* Space between each big letter */
+    padding: 50px 0;
+}
+
+.letter-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.gnommish-large {
+    font-family: 'Gnommish';
+    font-size: 8rem; /* Big and awesome */
+    margin-bottom: 10px;
+}
+
+.english-ref {
+    font-size: 2rem;
+    font-weight: bold;
+    border-top: 2px solid #000;
+    width: 100px;
+    padding-top: 10px;
+}
+
+.phonetic-sound {
+    font-size: 1.2rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
