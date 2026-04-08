@@ -150,3 +150,49 @@ textarea {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+/* Dropdown Container */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dictionary Button */
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Hidden Alphabet Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    min-width: 60px;
+    border: 1px solid #00ff00;
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #00ff00;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #003300;
+}
+
+/* Show the menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
