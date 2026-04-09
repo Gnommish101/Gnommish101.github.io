@@ -7,10 +7,16 @@
 </head>
 <body>
     <style>
-  html {
-    scroll-behavior: smooth;
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    min-height: 200vh; /* This makes the page twice as tall as the screen */
+    overflow-y: scroll !important; /* Forces the vertical scrollbar to exist */
   }
 </style>
+
     <nav>
         <div class="logo"><h1>GNOMMISH</h1><p>LEP TERMINAL v1.0</p></div>
         <a href="index.html">Home</a>
